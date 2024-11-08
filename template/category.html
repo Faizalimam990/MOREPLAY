@@ -1,0 +1,239 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="{% static 'logo.png' %}">
+  <title>{{ category_name|title }}</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+    crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/64085cd283.js" crossorigin="anonymous"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+</head>
+<style>
+  body{
+    background-color: #1E1C1C;
+  }
+  
+  .km1 {
+    border: 1px solid #32d78a;
+    border-radius: 50px;
+    color: #32d78a !important;
+    
+
+  }
+  .breadcrumb{
+    
+    background-color: #1E1C1C;
+
+  }
+  .breadcrumb-item a{
+    color: #32d78a !important;
+    font-family: 'lazydog';
+    font-size: 1.8rem;
+  }
+  .km1:hover{
+    background-color: #32d78a !important; 
+    color: white !important;
+  }
+ 
+
+  .text {
+    color: #32d78a;;
+  }
+
+  .nav-link {
+    margin-left: 2px;
+    
+  }
+  
+@font-face {
+    font-family: 'lazydog'; /* Name you want to use in CSS */
+    src: url('{% static "lazy_dog.woff" %}') format('woff'); /* Path to your font */
+    font-weight: normal; /* or bold */
+    font-style: normal; /* or italic */
+}
+.card{
+  background-color: #1E1C1C;
+  color: aliceblue;
+}
+.card:hover{
+  box-shadow: 2px 2px 4px 4px #32d78a;
+  transition: 1s;
+}
+.text-gree{
+  color: #32d78a;
+  font-family: 'lazydog';
+}
+.list-group-item{
+  background-color: #32D78A;
+}
+.bg-warning3{
+  background-color: #1E1C1C;
+}
+.liss{
+  color: white  ;
+}
+
+</style>
+<body>
+  
+  <nav class="navbar navbar-expand-lg navbar-dark bgg">
+    <a class="navbar-brand " style="font-family: cursive;" href="#"><img src="{% static 'logo.png' %}" alt=""
+        srcset="">Moreplay</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item active">
+          <a class="nav-link " href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Shop</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+            Categories
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link ">About Us</a>
+        </li>
+
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item text mr-3 km1">
+          <a class="nav-link text km1" href="#">
+            <i class="fas  fa-shopping-cart"></i>  Shop Cart </span>
+          </a>
+        </li>
+        <li class="nav-item km1">
+          <a class="nav-link km1" href="/login">
+            <i class="fas  fa-user"></i>  Account </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <nav aria-label="breadcrumb ">
+    <ol class="breadcrumb">
+        {% for breadcrumb in breadcrumbs %}
+            <li class="breadcrumb-item">
+                <a href="{{ breadcrumb.url }}">{{ breadcrumb.name }}</a>
+            </li>
+        {% endfor %}
+    </ol>
+</nav>
+<div class="container-fluid">
+  <div class="row">
+    <!-- Sidebar Section -->
+    <div class="col-md-3 bg-warning3 d-none d-md-block">
+      <ul class="list-group">
+        <li class="list-group-item bg-success " style="color: white; font-family: 'lazydog';">All Categories</li>
+        {% for category in categories %}
+            <li class="list-group-item">
+                <a href="{% url 'category_view' category %}" class="liss">{{ category }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+    </div>
+
+    <!-- Main Content Section -->
+    <div class="col-md-9">
+      <div class="row">
+          {% for product in products %}
+          <div class="col-md-3 mb-4">
+              <!-- Product Card -->
+              <div class="card">
+                  <img src="{{ product.images.url }}" class="card-img-top imgg mx-auto img-fluid" alt="{{ product.Product_name }}">
+                  <div class="card-body">
+                      <h4 class="card-title text-center">{{ product.Product_name }}</h4>
+                      <p class="card-text text-center " style="color: #32D78A; font-family: 'lazydog';">{{ product.category }}</p>
+                      <p class="card-text text-center" style="font-family: sans-serif;"> ₹{{ product.price }} 
+                          <span style="color: #32d78a; font-size: 15px;"> <del> 2099</del > </span>
+                          <span style="color: coral;">(50% OFF)</span>
+                      </p>
+                      <!-- Buy Now Button -->
+                      <a href="{% url 'add_to_cart' product.Product_id %}" class="btn btn-primary ml-5">Add to Cart</a>
+                  </div>
+              </div>
+          </div>
+          {% endfor %}
+      </div>
+  </div>
+  
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+</body>
+<style>
+  .imgg{
+    width: 200px;
+    height: 200px;
+  }
+  .card{
+    width: 300px;
+    
+  }
+  
+</style>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+    <div class="container">
+        <h1 class="category-title"> {{ category_name|title }} Products</h1>
+        <div class="product-list">
+            {% for product in products %}
+                <div class="product-card">
+                    <img src="{{ product.images.url }}" alt="{{ product.Product_name }}">
+                    <h2>{{ product.Product_name }}</h2>
+                    <p>{{ product.desc }}</p>
+                    <p class="price">Price: ${{ product.price }}</p>
+                </div>
+            {% empty %}
+                <p>No products found in this category.</p>
+            {% endfor %}
+        </div>
+    </div>
+<div class="container-fluid">
+
+
+</div>-->

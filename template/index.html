@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="{% static 'logo.png' %}">
+  <title>Moreplay-Gamers Ecommerce</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+    crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/64085cd283.js" crossorigin="anonymous"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</head>
+<style>
+  body {
+    background-color: rgb(0, 0, 0);
+    cursor: url('static/icons.png'), auto;	
+  }
+  
+
+  .bgg {
+    background-color: rgb(0, 0, 0);
+    font-family: sans-serif;
+  }
+.banner{
+  background-color: #000;
+}
+  .km1 {
+    
+    color: #32d78a !important;
+    
+
+  }
+  .km1:hover{
+    background-color: #32d78a !important; 
+    color: white !important;
+  }
+ 
+
+  .text {
+    color: #32d78a;;
+  }
+
+  .nav-link {
+    margin-left: 2px;
+    
+  }
+
+  .bg-warn {
+    background-color: rgb(0, 0, 0);
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .pp {
+    font-size: 14px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+    color: rgb(46, 44, 42);
+  }
+
+  .iim {
+    height: 500px;
+  }
+
+
+  .Gaming::before {
+    content: "Games";
+    animation: animate infinite 3s;
+    color: #32d78a;
+
+  }
+
+  @keyframes animate {
+    0% {
+      content: " Gadgets";
+    }
+
+    50% {
+      content: " Merchandise";
+    }
+
+    75% {
+      content: " Headphones";
+    }
+  }
+
+
+  .box2 {
+    background-color: #32d78a;;
+    width: 100px;
+    height: 300px;
+    position: absolute;
+    transform: skewX(20deg)
+  }
+
+  .box2:hover {
+    transform: rotate(0deg);
+    transition: 0.5s;
+  }
+
+
+  .cde {
+    background: rgba(255, 255, 255, 0);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(3.5px);
+    -webkit-backdrop-filter: blur(3.5px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  .cde:hover {
+    
+    box-shadow: 5px 5px 5px #32d78a;;
+    transition: 1s;
+    
+  }
+  
+body{
+  overflow-x: hidden;
+}
+
+  
+.productimg{
+  background-color: #FFD43B;
+  
+}
+.img-fluidp {
+    width: 100px;
+    height: 200px;
+    background-color: black;
+}
+.card{
+  
+  background-color: black;
+  border-radius: 10px;
+  color: #ffffff;
+  
+}
+.btn-success{
+  background-color: #32d78a;;
+}
+.card:hover{
+  background: #32d78a;;
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 6.5px );
+-webkit-backdrop-filter: blur( 6.5px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
+color: black;
+  transition:1s;
+  
+}
+.text-warning{
+  color: #32d78a;;
+}
+.buy-now-btn{
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Show buttons on hover */
+.card:hover .buy-now-btn {
+    display: block;
+}
+.fa-shopping-cart:hover{
+  background-color: #32d78a;
+ 
+  
+
+}
+#custom-cursor {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #000;
+  border: 4px solid #32d78a;
+  border-radius: 50%;
+  mix-blend-mode: difference;
+  pointer-events: none;
+  z-index: 999;
+  transition: top 0.025s ease, left 0.025s ease, transform 0.25s ease;
+}
+
+@font-face {
+    font-family: 'lazydog'; /* Name you want to use in CSS */
+    src: url('{% static "lazy_dog.woff" %}') format('woff'); /* Path to your font */
+    font-weight: normal; /* or bold */
+    font-style: normal; /* or italic */
+}
+@media only screen and (max-width: 600px) {
+  
+  .km1{
+    width: 100px;
+    
+  }
+  .iim{
+    width: 200px;
+  }
+}
+
+</style>
+
+<body>
+  <script>
+    AOS.init();
+  </script>
+  
+  <nav class="navbar navbar-expand-lg navbar-dark bgg">
+    <a class="navbar-brand " style="font-family: cursive;" href="#"><img src="{% static 'logo.png' %}" alt=""
+        srcset="">Moreplay</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item active">
+          <a class="nav-link " href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Shop</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+            Categories
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link ">About Us</a>
+        </li>
+
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item text mr-3 km1">
+          <a class="nav-link text km1" href="{% url 'cart' %}">
+              <i class="fas ml-3 fa-shopping-cart"></i> Cart 
+              {% if request.session.cart %}
+                  <span class="badge badge-pill badge-warning">{{ request.session.cart|length }}</span>
+              {% endif %}
+          </a>
+      </li>
+      
+        <li class="nav-item km1">
+          <a class="nav-link km1" href="/login">
+            <i class="fas ml-2 fa-user"></i>  Account </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  
+  <div class="container-fluid banner bg-warn">
+    <div class="row">
+      <div class="col-md-6  col-sm-12" data-aos="fade-left">
+        <p class="text-light ml-5 mb-0 mt-5">We Present Onee Stop Shop For Gamers</p>
+        <h4 class=" ml-4 display-4 text-light">Trending <span class="Gaming"> </span> </h4>
+        <p class="mt-1 ml-4 text-align-left text-light display-5 pp ">Enhance your gaming experience with cutting-edge
+          gadgets designed to make your gameplay not only easier but also remarkably comfortable. Dive into the world of
+          trending gaming gadgets that have been meticulously crafted to provide seamless controls, immersive visuals,
+          and ergonomic designs. Whether you're a casual gamer or a dedicated enthusiast, these innovative tools aim to
+          elevate your gaming sessions by optimizing comfort and functionality. Say goodbye to discomfort and hello to a
+          new level of gaming pleasure as you explore the realm of devices tailored to enhance every aspect of your
+          gaming journey.</p>
+        <div class="row ml-4 mt-2 ">
+          <button type="button" class="btn btn-success text-light  mr-4">
+            Shop Now <i class="fas fa-arrow-right" style="color: #ffffff;"></i>
+          </button>
+
+          <button type="button" class="btn btn-success text-light">See More</button>
+
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <img src="{% static 'hero-1.png' %}" data-aos="fade-right" class="img-fluid iim " alt="">
+      </div>
+    </div>
+  </div>
+  <div id="custom-cursor"></div>
+
+  <hr style="background-color: #32d78a;;">
+  <div class="container p-2 mobile mt-4">
+    <div class="row">
+      <div data-aos="fade-left" class="col-md-4 cde .col-sm-4">
+        <i class="fas fa-light fa-cart-shopping fa-3x ml-5 mb-2" style="color: #32d78a;"></i>
+        <h4 class="display-5 " style="color: #32d78a;;">One Click Order</h4>
+        <p class="text-light text-align-center">No Worries about different payment mechanism just click and get your
+          Order Booked</p>
+        <!--  6261 068 750
+        
+        -->  
+      </div>
+      <div data-aos="fade-left" class="col-md-4 cde .col-sm-4">
+        <i class="fas fa-solid fa-handshake-angle fa-3x ml-5 mb-2" style="color: #32d78a;"></i>
+        <h4 class="display-5 " style="color: #32d78a;;">24x Support</h4>
+        <p class="text-light text-align-center">Our Customer Care Executives are online 24x7 for your help and enquiries
+          related to us</p>
+
+      </div>
+      <div data-aos="fade-left" class="col-md-4 cde .col-sm-4">
+        <i class="fas fa-light fa-truck fa-3x ml-5 mb-2" style="color: #32d78a;;"></i>
+        <h4 class="display-5 " style="color: #32d78a;;">Fast Delivery</h4>
+        <p class="text-light text-align-center">We try to Deliver your product as fast as possible means we have so no
+          longer you have to wait</p>
+
+      </div>
+    </div>
+  </div>
+  
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+
+      </div>
+      <div class="col-md-3">
+
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid mt-5">
+    <div class="row">
+      <div class="col-md-6 col-sm-6">
+        <h4 class="display-4  mml p-2" data-aos="fade-right" data-aos-delay="500"
+          style="font-family: sans-serif;color: #32d78a;; font-weight: bolder;">Start Your Gaming Journey With Us</h4>
+        <div class="container  row mt-5">
+          <i class="fa-regular kl ml-3 fa-square-check fa-2x" style="color: #32d78a;"></i>
+          <h4 class="display-5 kl text-light ml-2">Quality Assured</h4>
+        </div>
+        <div class="container row mt-5">
+          <i class="fa-regular kl ml-3 fa-square-check fa-2x ml-3" style="color: #32d78a;"></i>
+          <h4 class="display-5 kl text-light ml-2">Latest Launched Products</h4>
+
+
+        </div>
+        <div class="container row mt-5">
+          <i class="fa-regular kl ml-3 fa-square-check fa-2x" style="color: #32d78a;;"></i>
+          <h4 class="display-5 kl text-light ml-2">7 Days Replacement </h4>
+
+        </div>
+
+      </div>
+      <div class="col-md-6  col-sm-6">
+        <div class="box">
+
+        </div>
+        <div class="box2 ml-5">
+
+        </div>
+        <img src="{% static 'fun.png' %}" data-aos="fade-up" class="img-fluid ml-4 box3" alt="" srcset="">
+      </div>
+    </div>
+   
+    <p class="text-light" style="font-size: 28px;"> <span style="background-color: #32d78a; color:#32d78a;">s </span>  Trending Products </p>
+
+    <div class="owl-carousel owl-theme">
+      {% for product in pob|slice:":6" %}
+      <div class="item">
+        <div class="card" style="position: relative;">
+          <img src="{{ product.images.url }}" class="card-img-top img-fluidp" alt="{{ product.name }}">
+          <div class="card-body">
+              <h5 class="card-title  text-truncate">{{ product.Product_name }}</h5>
+              <p class="card-text ">Price: {{ product.price }}</p>
+              <a href="products/{{ product.Product_id}} " class="btn btn-success text-light ml-2 buy-now-btn">
+                  Buy Now
+                  <i class="fas fa-shopping-cart" style="color: white;"></i>
+              </a>
+              <p class="text-light"> {{ product.Product_id}}</p>
+              
+          </div>
+      </div>
+      
+      </div>
+      {% endfor %}
+  </div>
+
+  <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="{% static 'banner5.png' %}" class="d-block w-100" height="400px" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h4 style="font-family: lazydog; color: #32D78A;" class="display-4" >Why Be A Normal Gamer</h4>
+          <p>Unleash your gaming potential with <span class="text" style="font-family: lazydog; color:#32D78A;" >MorePlay! </span>  This vibrant banner invites you to step beyond the ordinary and dive into an extraordinary gaming experience. Featuring dynamic visuals of thrilling gameplay, diverse characters, and epic landscapes, it captures the excitement of what gaming can truly be.</p>
+          <button class="gaming-button">Play Now</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+    <p class="text-light text-center" style="font-size: 3.2rem;font-family: lazydog;">
+        <span style="background-color: #32d78a; color:#32d78a;">s </span> Categories
+    </p>
+
+    <div class="container">
+      <div class="row">
+          <div class="col-md-3 text-center">
+              <a href="{% url 'category_view' 'Games' %}" style="text-decoration: none; color: white;">
+                  <i class="fa-6x fa-solid fa-gamepad" style="color: #32d78a;"></i>
+                  <p style="font-family: sans-serif; font-size: 2.4rem;">Games</p>
+              </a>
+          </div>
+          <div class="col-md-3 text-center">
+              <a href="{% url 'category_view' 'Keyboard' %}" style="text-decoration: none; color: white;">
+                  <i class="fa-6x fa-solid fa-keyboard" style="color: #32d78a;"></i>
+                  <p style="font-family: sans-serif; font-size: 2.4rem;">Keyboards</p>
+              </a>
+          </div>
+          <div class="col-md-3 text-center">
+              <a href="{% url 'category_view' 'Headphones' %}" style="text-decoration: none; color: white;">
+                  <i class="fa-6x fa-solid fa-headphones-simple" style="color: #32d78a;"></i>
+                  <p style="font-family: sans-serif; font-size: 2.4rem;">Headphones</p>
+              </a>
+          </div>
+          <div class="col-md-3 text-center">
+              <a href="{% url 'category_view' 'tshirts' %}" style="text-decoration: none; color: white;">
+                  <i class="fa-6x fa-solid fa-tshirt" style="color: #32d78a;"></i>
+                  <p style="font-family: 'Times New Roman', Times, serif; font-size: 2.4rem;">T-shirts</p>
+              </a>
+          </div>
+      </div>
+  </div>
+  
+  
+    
+
+<hr style="height: 3px; background-color: #32D78A; ">
+<div class="container mb-5">
+  <form method="post">{% csrf_token %}
+    <h4 class="display-4 text-center" style="font-family: lazydog; font-size: 3.1rem; color: #32d78a; font-weight: bolder;">Subscribe to Our Newsletter</h4>
+    
+    <div class="input-group">
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your email">
+      <div class="input-group-append">
+        <input type="submit" class="btn submit-button" value="Subscribe">
+      </div>
+    </div>
+  </form>
+</div>
+<hr  style="height: 3px; margin-top: 5px; background-color: #32D78A; ">
+<footer class="site-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h6>About</h6>
+        <p class="text-justify">Moreplay.com <i>Games are yout ways </i> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus sit magni accusamus enim nihil quibusdam officia. Ipsum sequi expedita eaque nesciunt aspernatur harum veritatis, voluptates temporibus deserunt nihil quam necessitatibus nostrum molestias unde beatae labore molestiae doloribus numquam, deleniti doloremque quo culpa iure non. Velit officia illo pariatur tempore sit?.</p>
+      </div>
+
+      <div class="col-xs-6 col-md-3">
+        <h6>Categories</h6>
+        <ul class="footer-links">
+          <li><a href="#">Games</a></li>
+          <li><a href="#">T-shirt</a></li>
+          <li><a href="http://scanfcode.com/category/back-end-development/">Game Gadgets</a></li>
+          <li><a href="http://scanfcode.com/category/java-programming-language/">Headphones</a></li>
+          <li><a href="#">Android</a></li>
+          <li><a href="#">Controlles</a></li>
+        </ul>
+      </div>
+
+      <div class="col-xs-6 col-md-3">
+        <h6>Quick Links</h6>
+        <ul class="footer-links">
+          <li><a href="http://scanfcode.com/about/">About Us</a></li>
+          <li><a href="http://scanfcode.com/contact/">Contact Us</a></li>
+          <li><a href="http://scanfcode.com/contribute-at-scanfcode/">Contribute</a></li>
+          <li><a href="http://scanfcode.com/privacy-policy/">Privacy Policy</a></li>
+          <li><a href="http://scanfcode.com/sitemap/">Sitemap</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-sm-6 col-xs-12">
+        <p class="copyright-text">Copyright &copy; 2017 All Rights Reserved by 
+     <a href="#">Moreplay</a>.
+        </p>
+      </div>
+
+      <div class="col-md-4 col-sm-6 col-xs-12">
+        <ul class="social-icons">
+          <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+          <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+          <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
+          <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>   
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+</body>
+
+
+<script>
+  $('.owl-carousel').owlCarousel({
+loop:true,
+margin:10,
+nav:true,
+responsive:{
+    0:{
+        items:2
+    },
+    600:{
+        items:3
+    },
+    1000:{
+        items:5
+    }
+}
+})
+document.addEventListener("DOMContentLoaded", function () {
+const cursor = document.getElementById("custom-cursor");
+
+document.addEventListener("mousemove", function (e) {
+cursor.style.top = e.clientY + "px";
+cursor.style.left = e.clientX + "px";
+});
+});
+
+</script>
+
+
+
+</html>

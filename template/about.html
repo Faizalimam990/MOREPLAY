@@ -1,0 +1,21 @@
+{% extends 'basic.html' %}
+{% load static %}
+
+{% block style %}
+  {{ block.super }}
+
+  <style>
+    /* Additional styles for the About Us page */
+    .aboutus-content {
+      color: white;
+      padding: 20px;
+    }
+  </style>
+{% endblock %}
+
+{% block body %}
+  <div class="aboutus-content">
+    <h1>About Us Page</h1>
+    <p>This is the content of the About Us page.</p>
+  </div>
+{% endblock %}

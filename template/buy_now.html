@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Your Payment</title>
+
+    <!-- Google Fonts for better typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Global Styles */
+        body {
+            background-color: #f4f4f4;
+            color: #333;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            color: #333;
+            margin-top: 50px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 20px;
+            width: 100%;
+        }
+
+        .bill {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 800px;
+            margin-bottom: 20px;
+        }
+
+        .bill-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .bill-header h2 {
+            font-size: 2rem;
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .bill-header p {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        .product-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 15px;
+        }
+
+        .product-row img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+
+        .product-info {
+            flex-grow: 1;
+        }
+
+        .product-info h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        .product-info p {
+            margin: 5px 0;
+            color: #777;
+        }
+
+        .product-price {
+            font-size: 1.1rem;
+            color: #f37254;
+        }
+
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            margin-top: 20px;
+            font-size: 1.2rem;
+            border-top: 1px solid #eee;
+            margin-bottom: 20px;
+        }
+
+        .total-row strong {
+            font-weight: bold;
+        }
+
+        .pay-button {
+            background-color: #f37254;
+            color: white;
+            font-size: 1.2rem;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            width: 100%;
+            max-width: 350px;
+            margin: 20px auto;
+        }
+
+        .pay-button:hover {
+            background-color: #ff5733;
+            transform: translateY(-3px);
+        }
+
+        .pay-button:focus {
+            outline: none;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .bill {
+                width: 100%;
+                padding: 20px;
+            }
+
+            .pay-button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Complete Your Payment</h1>
+
+        <div class="bill">
+            <div class="bill-header">
+                <h2>Invoice</h2>
+                <p>Thank you for shopping with us!</p>
+            </div>
+
+            <!-- Iterate over the cart items -->
+            {% for item in cart %}
+            <div class="product-row">
+                <img src="{{ item.image }}" alt="{{ item.name }}">
+                <div class="product-info">
+                    <h3>{{ item.name }}</h3>
+                    <p><strong>Quantity:</strong> {{ item.quantity }}</p>
+                </div>
+                <div class="product-price">
+                    <strong>Total:</strong> ₹{{ item.total_price }}
+                </div>
+            </div>
+            {% endfor %}
+
+            <!-- Order Summary -->
+            <div class="total-row">
+                <strong>Total Amount:</strong>
+                <p>Total Amount: ₹{{ order_amount }}</p>
+            </div>
+
+            <!-- Pay Now Button -->
+            <button id="pay-button" class="pay-button">Pay ₹Pay ₹ {{ order_amount }}</button>
+        </div>
+    </div>
+
+    <!-- Razorpay Checkout.js Script -->
+    
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+        var options = {
+            "key": "{{ razorpay_key }}",  // Your Razorpay key
+            "amount": "{{ order_amount_in_paise }}",  // Amount in paise
+            "currency": "INR",
+            "order_id": "{{ razorpay_order_id }}",
+            "name": "Your Company Name",
+            "description": "Order description",
+            "image": "/path/to/logo.png",
+            "handler": function (response) {
+                // Handle payment success here (You can send details to the backend for verification)
+                var payment_id = response.razorpay_payment_id;
+                var order_id = response.razorpay_order_id;
+                var signature = response.razorpay_signature;
+                
+                // Send these details to your backend
+                fetch('/verify-payment/', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        razorpay_payment_id: payment_id,
+                        razorpay_order_id: order_id,
+                        razorpay_signature: signature
+                    }),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.status);
+                });
+            },
+            "prefill": {
+                "name": "Customer Name",
+                "email": "customer@example.com",
+                "contact": "1234567890"
+            },
+            "theme": {
+                "color": "#F37254"
+            }
+        };
+
+        var rzp1 = new Razorpay(options);
+        document.getElementById('pay-button').onclick = function(e){
+            rzp1.open();
+            e.preventDefault();
+        }
+    </script>
+
+</body>
+</html>
