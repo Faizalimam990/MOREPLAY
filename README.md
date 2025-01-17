@@ -33,4 +33,16 @@ pip install -r requirements.txt
 3.**Install The development Server**
 ```bash
 python manage.py runserver
+
+```
+
+### Summary of Steps:
+- **Step 1**: Clone the repository and navigate into the project directory.
+- **Step 2**: Create a virtual environment and activate it.
+- **Step 3**: Install the project dependencies using `pip`.
+- **Step 4**: Migrate the database to set up the required tables.
+- **Step 5**: Create a superuser to access the Django admin panel.
+- **Step 6**: Start the Django development server and view the site locally.
+
+
 ```
